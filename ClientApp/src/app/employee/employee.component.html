@@ -1,0 +1,75 @@
+
+<h1>Сотрудники</h1>
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+        <tr>
+            <th (click)="sortColumn('department')">
+                Отдел
+                <i class="fas" [ngClass]="{'fa-arrow-up': selectedColumn === 'department' && sortDirection === 'asc', 'fa-arrow-down': selectedColumn === 'department' && sortDirection === 'desc'}"></i>
+            </th>
+            <th (click)="sortColumn('fullName')">
+                ФИО
+                <i class="fas" [ngClass]="{'fa-arrow-up': selectedColumn === 'fullName' && sortDirection === 'asc', 'fa-arrow-down': selectedColumn === 'fullName' && sortDirection === 'desc'}"></i>
+            </th>
+            <th (click)="sortColumn('birthDate')">
+                Дата рождения
+                <i class="fas" [ngClass]="{'fa-arrow-up': selectedColumn === 'birthDate' && sortDirection === 'asc', 'fa-arrow-down': selectedColumn === 'birthDate' && sortDirection === 'desc'}"></i>
+            </th>
+            <th (click)="sortColumn('employmentDate')">
+                Дата устройства на работу
+                <i class="fas" [ngClass]="{'fa-arrow-up': selectedColumn === 'employmentDate' && sortDirection === 'asc', 'fa-arrow-down': selectedColumn === 'employmentDate' && sortDirection === 'desc'}"></i>
+            </th>
+            <th (click)="sortColumn('salary')">
+                Зарплата
+                <i class="fas" [ngClass]="{'fa-arrow-up': selectedColumn === 'salary' && sortDirection === 'asc', 'fa-arrow-down': selectedColumn === 'salary' && sortDirection === 'desc'}"></i>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.fullName }}</td>
+            <td>{{ employee.birthDate | date:'dd.MM.yyyy' }}</td>
+            <td>{{ employee.employmentDate | date:'dd.MM.yyyy'}}</td>
+            <td>{{ employee.salary}}</td>
+            <td>
+
+                <button class="btn btn-sm btn-primary" (click)="editEmployee(employee)">Изменить</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee)">Удалить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-warning" (click)="addEmployee()">Добавить сотрудника</button>
+
+<div class="popup background" *ngIf="editMode">
+    <div class="popup">
+        <h2 style="color: white;">{{ isNewEmployee ? 'Добавление' : 'Редактирование' }}</h2>
+        <form (submit)="saveEmployee()">
+            <div class="form-group">
+                <label style="color: white;" for="department">Отдел:</label>
+                <input type="text" class="form-control" id="department" name="department" [(ngModel)]="employee.department" required>
+            </div>
+            <div>
+                <label style="color: white;" for="fullName">ФИО:</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="employee.fullName " required>
+            </div>
+            <div>
+                <label style="color: white;" for="birthDate">Дата рождения:</label>
+                <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="employee.birthDate" required>
+            </div>
+            <div>
+                <label style="color: white;" for="employmentDate">Дата устройства на работу:</label>
+                <input type="date" class="form-control" id="employmentDate" name="employmentDate" [(ngModel)]="employee.employmentDate" required>
+            </div>
+            <div>
+                <label style="color: white;" for="salary">Зарплата:</label>
+                <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="employee.salary" required>
+            </div>
+            <button type="submit" class="btn btn-success">{{ isNewEmployee ? 'Добавить' : 'Сохранить' }}</button>
+            <button type="button" class="btn btn-warning" (click)="cancelEdit()">Отмена</button>
+        </form>
+    </div>
+</div>

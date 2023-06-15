@@ -1,0 +1,60 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">
+     
+    <svg width="150" height="32" viewBox="0 0 150 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="header-nav_mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+            <path d="M0 5.33333C0 2.38782 2.38781 0 5.33333 0H32V32H5.33333C2.38782 32 0 29.6122 0 26.6667V5.33333Z" fill="#C4C4C4"></path>
+        </mask>
+        <g mask="url(#header-nav_mask0)">
+            <path d="M16 16L0 32H32L16 16Z" fill="#EB2448"></path>
+            <mask id="header-nav_mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="16" width="32" height="16">
+                <path d="M16 16L0 32H32L16 16Z" fill="#EB2448"></path>
+            </mask>
+            <g mask="url(#header-nav_mask1)">
+                <path d="M32 0L0 32H1.33333L32 1.33333V0Z" fill="black" fill-opacity="0.1"></path>
+            </g>
+            <path d="M16 16L0 0V32L16 16Z" fill="#E3E3E3"></path>
+            <path d="M16 16L0 0H32L16 16Z" fill="#0085FF"></path>
+        </g>
+        <path d="M63.8933 24L63.87 14.2233L59.0633 22.2733H57.3833L52.5767 14.41V24H49.03V7.66667H52.1567L58.27 17.8167L64.29 7.66667H67.4167L67.44 24H63.8933ZM71.4974 7.66667H75.2541V18.3067L83.0474 7.66667H86.5941V24H82.8608V13.3833L75.0674 24H71.4974V7.66667ZM97.7309 7.66667C99.1775 7.66667 100.43 7.90778 101.488 8.39C102.561 8.87222 103.385 9.55667 103.961 10.4433C104.536 11.33 104.824 12.38 104.824 13.5933C104.824 14.7911 104.536 15.8411 103.961 16.7433C103.385 17.63 102.561 18.3144 101.488 18.7967C100.43 19.2633 99.1775 19.4967 97.7309 19.4967H94.4409V24H90.6609V7.66667H97.7309ZM97.5209 16.4167C98.6564 16.4167 99.5197 16.1756 100.111 15.6933C100.702 15.1956 100.998 14.4956 100.998 13.5933C100.998 12.6756 100.702 11.9756 100.111 11.4933C99.5197 10.9956 98.6564 10.7467 97.5209 10.7467H94.4409V16.4167H97.5209ZM118.956 9.16H113.216V24H111.512V9.16H105.772V7.66667H118.956V9.16ZM133.536 22.5067V24H121.986V7.66667H133.186V9.16H123.713V14.97H132.16V16.44H123.713V22.5067H133.536ZM137.326 7.66667L141.969 14.13L146.589 7.66667H148.619L143.042 15.5067L149.062 24H147.032L141.969 16.9767L136.906 24H134.922L140.919 15.5767L135.342 7.66667H137.326Z" fill="#E3E3E3"></path>
+    </svg>
+</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+          <ul class="navbar-nav flex-grow">
+              <li class="nav-item"
+                  [routerLinkActive]="['link-active']"
+                  [routerLinkActiveOptions]="{ exact: true }">
+                  <a class="nav-link" [routerLink]="['/']">О компании</a>
+              </li>
+             <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+                  <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+              </li>
+              <li class="nav-item" [routerLinkActive]="['link-active']">
+                  <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+              </li>-->
+              <li class="nav-item" [routerLinkActive]="['link-active']">
+                  <a class="nav-link" [routerLink]="['api/employee']">Сотрудники</a>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+</header>
